@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<company>
+    <employee id="1">
+        <name>John Doe</name>
+        <contact>
+            <email>john.doe@example.com</email>
+            <phone>123456789</phone>
+        </contact>
+        <department>
+            <name>IT</name>
+            <location>Building A</location>
+        </department>
+    </employee>
+    <employee id="2">
+        <name>Jane Smith</name>
+        <contact>
+            <email>jane.smith@example.com</email>
+            <phone>987654321</phone>
+        </contact>
+        <department>
+            <name>HR</name>
+            <location>Building B</location>
+        </department>
+    </employee>
+    <employee id="3">
+        <name>Peter Jones</name>
+        <department>
+            <name>Finance</name>
+            <location>Building A</location>
+        </department>
+    </employee>
+    <employee id="4">
+        <name>Alice Brown</name>
+        <contact>
+            <email>alice.brown@example.com</email>
+        </contact>
+        <department>
+            <name>IT</name>
+            <location>Remote</location>
+        </department>
+    </employee>
+</company>

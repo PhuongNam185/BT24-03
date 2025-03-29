@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+    <student id="SV001">
+        <name>Nguyen Van A</name>
+        <msv>19020001</msv>
+        <class>CNTT1-K64</class>
+    </student>
+    <student id="SV002">
+        <name>Tran Thi B</name>
+        <msv>19020002</msv>
+        <class>CNTT2-K64</class>
+    </student>
+    <student id="SV003">
+        <name>Le Van C</name>
+        <msv>19020003</msv>
+        <class>CNTT1-K64</class>
+    </student>
+</students>

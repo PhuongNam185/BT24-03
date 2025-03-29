@@ -1,65 +1,65 @@
 package BT1.products;
 
-import org.w3c.dom.*;
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-public class StudentXML {
-    public static void addStudentToXML(String fileName, String studentID, String name, int age, String major) {
+public class StudentXMLWriter {
+    public static void main(String[] args) {
         try {
-            File xmlFile = new File(fileName);
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
+            File xmlFile = new File("students.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc;
 
             if (xmlFile.exists()) {
-                doc = builder.parse(xmlFile);
+                doc = dBuilder.parse(xmlFile);
+                doc.getDocumentElement().normalize();
             } else {
-                doc = builder.newDocument();
-                Element root = doc.createElement("students");
-                doc.appendChild(root);
+                doc = dBuilder.newDocument();
+                Element rootElement = doc.createElement("students");
+                doc.appendChild(rootElement);
             }
 
-            Element root = doc.getDocumentElement();
+            // Nhập thông tin sinh viên
+            String id = "2";  // Ví dụ
+            String name = "Jane Doe";
+            String age = "22";
+            String major = "Mathematics";
 
-            // Create student element
-            Element student = doc.createElement("student");
-            student.setAttribute("id", studentID);
+            Element newStudent = doc.createElement("student");
+            newStudent.setAttribute("id", id);
 
-            Element nameElem = doc.createElement("name");
-            nameElem.setTextContent(name);
-            student.appendChild(nameElem);
+            Element studentName = doc.createElement("name");
+            studentName.appendChild(doc.createTextNode(name));
+            newStudent.appendChild(studentName);
 
-            Element ageElem = doc.createElement("age");
-            ageElem.setTextContent(String.valueOf(age));
-            student.appendChild(ageElem);
+            Element studentAge = doc.createElement("age");
+            studentAge.appendChild(doc.createTextNode(age));
+            newStudent.appendChild(studentAge);
 
-            Element majorElem = doc.createElement("major");
-            majorElem.setTextContent(major);
-            student.appendChild(majorElem);
+            Element studentMajor = doc.createElement("major");
+            studentMajor.appendChild(doc.createTextNode(major));
+            newStudent.appendChild(studentMajor);
 
-            root.appendChild(student);
+            doc.getDocumentElement().appendChild(newStudent);
 
-            // Save changes to the XML file
+            // Lưu file XML
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(xmlFile);
             transformer.transform(source, result);
 
-            System.out.println("Student information added to " + fileName);
-
+            System.out.println("Thông tin sinh viên đã được ghi vào file students.xml");
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        String fileName = "students.xml";
-        addStudentToXML(fileName, "1", "Nguyen Van A", 21, "Computer Science");
     }
 }

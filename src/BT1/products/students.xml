@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties/>
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student id="1">
+        <name>John Doe</name>
+        <age>21</age>
+        <major>Computer Science</major>
+    </student>
+    <student id="2">
+        <name>Jane Doe</name>
+        <age>22</age>
+        <major>Mathematics</major>
+    </student>
+</students>
